@@ -32,59 +32,23 @@ body {
   color: var(--primary-text);
 }
 
-/* Dashboard Hero Section */
+/*/* Dashboard Hero Section */
 .dashboard-hero {
-  padding: 48px 0 32px;
+  padding: 32px 0;
 }
 
 .dashboard-greeting {
-  font-size: 60px;
-  line-height: 60px;
+  font-size: 48px;
+  line-height: 1.2;
   font-weight: 700;
-  letter-spacing: -1.5px;
   color: var(--primary-text);
   margin-bottom: 8px;
 }
 
-.dashboard-name {
-  font-size: 60px;
-  line-height: 60px;
-  font-weight: 700;
-  letter-spacing: -1.5px;
-  color: var(--primary-text);
-  display: inline-block;
-  position: relative;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
-}
-
-/* The distinctive underline - matches original site */
-.dashboard-name::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  right: 0;
-  height: 12px;
-  background-color: #60A5FA;
-  opacity: 0.3;
-}
-
-.dashboard-updated {
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-  letter-spacing: -0.16px;
-  color: var(--muted-text);
-  margin-bottom: 32px;
-}
-
-/* Dashboard Stats Section */
 .dashboard-stats {
   font-size: 18px;
-  line-height: 29.25px;
+  line-height: 1.6;
   font-weight: 400;
-  letter-spacing: -0.16px;
   color: var(--secondary-text);
   margin-bottom: 32px;
 }
@@ -260,12 +224,23 @@ body {
   border: 1px solid var(--border-divider);
 }
 
-/* Project Cards */
+/*/* Project Cards */
+.project-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  transition: box-shadow 0.2s;
+}
+
+.project-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 .project-card-title {
-  font-size: 18px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 600;
-  letter-spacing: -0.45px;
   color: var(--primary-text);
 }
 
@@ -273,8 +248,31 @@ body {
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
-  letter-spacing: -0.16px;
   color: var(--muted-text);
+}
+
+/* Project Status Badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-completed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.status-paused {
+  background-color: #fef3c7;
+  color: #92400e;
 }
 
 /* Navigation */
@@ -341,7 +339,7 @@ body {
   margin-bottom: 16px;
 }
 
-/* Notifications */
+/*/* Notifications */
 .notification-item {
   display: flex;
   align-items: flex-start;
@@ -349,10 +347,56 @@ body {
   padding: 12px;
   border-radius: 8px;
   transition: background-color 0.15s;
+  cursor: pointer;
 }
 
 .notification-item:hover {
-  background-color: #F9FAFB;
+  background-color: #f9fafb;
+}
+
+.notification-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Dashboard specific overrides */
+.dashboard-container {
+  background-color: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Progress bars for projects */
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+/* Financial card specific */
+.financial-overview {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #e5e7eb;
+}
+
+.financial-metric-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary-text);
 }
 
 .notification-title {
