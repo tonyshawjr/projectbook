@@ -1,0 +1,159 @@
+/* Custom styles for Projectbook - Works with Tailwind CDN */
+
+:root {
+  --primary-text: #212631;
+  --menu-hover: #F3F5F7;
+  --tab-active: #60A5FA;
+  --blue-500: #3B82F6;
+  --blue-600: #2563EB;
+  --blue-50: #EFF6FF;
+  --status-active-bg: #D1FAE5;
+  --status-active-text: #065F46;
+  --status-completed-bg: #DBEAFE;
+  --status-completed-text: #1E40AF;
+  --status-paused-bg: #FEF3C7;
+  --status-paused-text: #92400E;
+  --border-divider: #E5E7EB;
+  --disabled: #9CA3AF;
+}
+
+/* Custom button styles */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--blue-500);
+  color: white;
+  height: 44px;
+  border-radius: 6px;
+  padding: 0 32px;
+  transition: background-color 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: var(--blue-600);
+}
+
+.btn-primary-small {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background-color: var(--blue-500);
+  color: white;
+  height: 36px;
+  border-radius: 6px;
+  padding: 0 12px;
+  gap: 4px;
+  transition: background-color 0.15s;
+}
+
+.btn-primary-small:hover {
+  background-color: var(--blue-600);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--blue-500);
+  color: var(--blue-500);
+  background-color: white;
+  height: 44px;
+  border-radius: 6px;
+  padding: 0 32px;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--blue-50);
+  color: var(--blue-600);
+}
+
+/* Status badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-active {
+  background-color: var(--status-active-bg);
+  color: var(--status-active-text);
+}
+
+.status-completed {
+  background-color: var(--status-completed-bg);
+  color: var(--status-completed-text);
+}
+
+.status-paused {
+  background-color: var(--status-paused-bg);
+  color: var(--status-paused-text);
+}
+
+/* Cards */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid var(--border-divider);
+}
+
+/* Navigation */
+.nav-link {
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #4B5563;
+  border-radius: 6px;
+  transition: background-color 0.15s;
+}
+
+.nav-link:hover {
+  background-color: var(--menu-hover);
+}
+
+.nav-link-active {
+  color: var(--tab-active);
+  border-bottom: 2px solid var(--tab-active);
+}
+
+/* Form inputs */
+.form-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: 6px;
+  font-size: 0.875rem;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--blue-500);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Progress bars */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #E5E7EB;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: var(--blue-500);
+  transition: width 0.3s ease;
+}
