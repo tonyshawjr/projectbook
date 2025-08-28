@@ -1,12 +1,18 @@
-/* Custom styles for Projectbook - Works with Tailwind CDN */
+/* Custom styles for Projectbook - Matches exact design */
 
 :root {
+  /* Colors */
   --primary-text: #212631;
+  --secondary-text: #374151;
+  --muted-text: #65758B;
+  --light-text: #9CA3AF;
   --menu-hover: #F3F5F7;
   --tab-active: #60A5FA;
   --blue-500: #3B82F6;
   --blue-600: #2563EB;
   --blue-50: #EFF6FF;
+  --green-500: #10B981;
+  --yellow-500: #FFC107;
   --status-active-bg: #D1FAE5;
   --status-active-text: #065F46;
   --status-completed-bg: #DBEAFE;
@@ -15,6 +21,132 @@
   --status-paused-text: #92400E;
   --border-divider: #E5E7EB;
   --disabled: #9CA3AF;
+  
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Global Typography */
+body {
+  font-family: var(--font-sans);
+  color: var(--primary-text);
+}
+
+/* Dashboard Hero Section */
+.dashboard-hero {
+  padding: 48px 0 32px;
+}
+
+.dashboard-greeting {
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--primary-text);
+  margin-bottom: 8px;
+}
+
+.dashboard-name {
+  font-size: 60px;
+  line-height: 60px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  color: var(--primary-text);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+/* The distinctive underline */
+.dashboard-name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue-500) 0%, transparent 100%);
+  border-radius: 2px;
+}
+
+.dashboard-updated {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  color: var(--muted-text);
+  margin-bottom: 32px;
+}
+
+/* Dashboard Stats Section */
+.dashboard-stats {
+  font-size: 18px;
+  line-height: 29.25px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  color: var(--secondary-text);
+  margin-bottom: 32px;
+}
+
+.dashboard-stats strong {
+  font-weight: 700;
+  color: var(--primary-text);
+}
+
+/* Financial Overview Card */
+.financial-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.financial-header {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.45px;
+  color: var(--primary-text);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.financial-metric {
+  margin-bottom: 20px;
+}
+
+.financial-label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  color: var(--muted-text);
+  margin-bottom: 4px;
+}
+
+.financial-value {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.16px;
+  color: var(--primary-text);
+}
+
+.financial-indicator {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+.indicator-up {
+  color: var(--green-500);
+}
+
+.indicator-pending {
+  color: var(--yellow-500);
 }
 
 /* Custom button styles */
@@ -23,18 +155,49 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
+  letter-spacing: -0.16px;
   background-color: var(--blue-500);
   color: white;
   height: 44px;
-  border-radius: 6px;
-  padding: 0 32px;
+  border-radius: 8px;
+  padding: 0 24px;
   transition: background-color 0.15s;
+  gap: 8px;
 }
 
 .btn-primary:hover {
   background-color: var(--blue-600);
+}
+
+.btn-primary-full {
+  width: 100%;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.16px;
+  border: 1.5px solid var(--blue-500);
+  color: var(--blue-500);
+  background-color: white;
+  height: 44px;
+  border-radius: 8px;
+  padding: 0 24px;
+  transition: all 0.15s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--blue-50);
+  border-color: var(--blue-600);
+  color: var(--blue-600);
 }
 
 .btn-primary-small {
@@ -42,13 +205,13 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 500;
   background-color: var(--blue-500);
   color: white;
   height: 36px;
   border-radius: 6px;
-  padding: 0 12px;
+  padding: 0 16px;
   gap: 4px;
   transition: background-color 0.15s;
 }
@@ -57,33 +220,14 @@
   background-color: var(--blue-600);
 }
 
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  font-size: 0.875rem;
-  font-weight: 500;
-  border: 1px solid var(--blue-500);
-  color: var(--blue-500);
-  background-color: white;
-  height: 44px;
-  border-radius: 6px;
-  padding: 0 32px;
-  transition: all 0.15s;
-}
-
-.btn-secondary:hover {
-  background-color: var(--blue-50);
-  color: var(--blue-600);
-}
-
 /* Status badges */
 .status-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 16px;
   font-weight: 500;
+  letter-spacing: -0.16px;
   display: inline-block;
 }
 
@@ -105,15 +249,41 @@
 /* Cards */
 .card {
   background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+
+.card-compact {
+  background-color: white;
   border-radius: 8px;
   border: 1px solid var(--border-divider);
+}
+
+/* Project Cards */
+.project-card-title {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.45px;
+  color: var(--primary-text);
+}
+
+.project-card-client {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  color: var(--muted-text);
 }
 
 /* Navigation */
 .nav-link {
   padding: 8px 16px;
-  font-size: 0.875rem;
+  font-size: 14px;
+  line-height: 20px;
   font-weight: 500;
+  letter-spacing: -0.16px;
   color: #4B5563;
   border-radius: 6px;
   transition: background-color 0.15s;
@@ -131,10 +301,13 @@
 /* Form inputs */
 .form-input {
   width: 100%;
-  padding: 8px 12px;
+  padding: 10px 12px;
   border: 1px solid var(--border-divider);
-  border-radius: 6px;
-  font-size: 0.875rem;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.16px;
+  font-family: var(--font-sans);
 }
 
 .form-input:focus {
@@ -156,4 +329,77 @@
   height: 100%;
   background-color: var(--blue-500);
   transition: width 0.3s ease;
+}
+
+/* Section Headers */
+.section-header {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.36px;
+  color: var(--primary-text);
+  margin-bottom: 16px;
+}
+
+/* Notifications */
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: background-color 0.15s;
+}
+
+.notification-item:hover {
+  background-color: #F9FAFB;
+}
+
+.notification-title {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.21px;
+  color: var(--primary-text);
+}
+
+.notification-time {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: -0.16px;
+  color: var(--muted-text);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--primary-text);
+}
+
+.text-secondary {
+  color: var(--secondary-text);
+}
+
+.text-muted {
+  color: var(--muted-text);
+}
+
+.text-light {
+  color: var(--light-text);
+}
+
+/* Icon adjustments */
+.icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-md {
+  width: 20px;
+  height: 20px;
+}
+
+.icon-lg {
+  width: 24px;
+  height: 24px;
 }
