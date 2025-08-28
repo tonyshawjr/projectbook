@@ -7,35 +7,89 @@ ob_start();
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Hero Section -->
-    <div class="py-8">
-        <h1 class="text-5xl font-bold mb-2">
-            Good afternoon,<br>
-            Tony
-        </h1>
-        <p class="text-gray-600 mb-8">Dashboard last updated on <?php echo $lastUpdated; ?>.</p>
-        
-        <div class="mb-8 text-lg text-gray-700">
-            <p class="mb-4">
-                You're managing <span class="font-semibold"><?php echo $stats['active_projects']; ?> active projects</span> with 
-                <span class="font-semibold"><?php echo $stats['open_tickets']; ?> open tickets</span> that need your attention. 
-                Our records show <span class="font-semibold">$<?php echo number_format($stats['overdue_invoices'], 0); ?> in overdue invoices</span> 
-                that would benefit from follow-up.
-            </p>
-            <p>
-                Your calendar has <span class="font-semibold"><?php echo $stats['upcoming_consultations']; ?> upcoming consultations</span> 
-                scheduled this week. Let's make today productive by tackling these priorities systematically.
-            </p>
-        </div>
+    <section class="mb-12">
+        <div class="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
+            <!-- Left Column - Hero Content -->
+            <div class="flex flex-col justify-center space-y-6">
+                <div class="space-y-2">
+                    <h1 class="text-4xl font-bold tracking-tight leading-tight md:text-5xl xl:text-6xl">
+                        Good afternoon,<br>
+                        <span class="relative inline-block">
+                            Tony
+                            <span class="absolute -bottom-2 left-0 right-0 h-3 bg-blue-400 opacity-30"></span>
+                        </span>
+                    </h1>
+                    <p class="text-muted-foreground mt-4 text-base">Dashboard last updated on <?php echo $lastUpdated; ?>.</p>
+                </div>
+                
+                <div class="space-y-6 text-base md:text-lg text-gray-700 dark:text-gray-300">
+                    <p class="leading-relaxed">
+                        You're managing <strong><?php echo $stats['active_projects']; ?> active projects</strong> with 
+                        <strong><?php echo $stats['open_tickets']; ?> open tickets</strong> that need your attention. 
+                        Our records show <strong>$<?php echo number_format($stats['overdue_invoices'], 2); ?> in overdue invoices</strong> 
+                        that would benefit from follow-up.
+                    </p>
+                    <p class="leading-relaxed">
+                        Your calendar has <strong><?php echo $stats['upcoming_consultations']; ?> upcoming consultations</strong> 
+                        scheduled this week. Let's make today productive by tackling these priorities systematically.
+                    </p>
+                </div>
 
-        <!-- Action Buttons -->
-    <div class="flex gap-4 mb-12">
-        <a href="/projects" class="btn-primary">
-            View Projects →
-        </a>
-        <a href="/tickets" class="btn-secondary">
-            Manage Tickets
-        </a>
-    </div>
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                    <a href="/projects" class="btn-primary gap-2">
+                        View Projects
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                    <a href="/tickets" class="btn-secondary">
+                        Manage Tickets
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Column - Financial Overview Card -->
+            <div class="flex items-center justify-center">
+                <div class="financial-card w-full max-w-md">
+                    <div class="flex flex-col space-y-1.5">
+                        <h3 class="financial-header">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+                            </svg>
+                            Financial Overview
+                        </h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="financial-label">Total Revenue</p>
+                                <p class="financial-value">$24,500</p>
+                            </div>
+                            <svg class="w-6 h-6 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="financial-label">Pending Invoices</p>
+                                <p class="financial-value">$8,200</p>
+                            </div>
+                            <svg class="w-6 h-6 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-primary-full mt-6">
+                        View Financial Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Left Column - Projects -->
