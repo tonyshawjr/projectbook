@@ -82,6 +82,7 @@ php.ini
 /.agent-os/
 /.claude/
 /.cursor/
+/.serena/
 /context/
 /CLAUDE.md
 /TAILWIND_CONFIG.md

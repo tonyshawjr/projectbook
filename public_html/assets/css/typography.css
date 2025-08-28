@@ -1,0 +1,282 @@
+/* Typography System - Based on UI Audit */
+
+:root {
+  /* Font Families */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-5xl: 60px;
+  
+  /* Line Heights */
+  --leading-4: 16px;
+  --leading-5: 20px;
+  --leading-6: 24px;
+  --leading-7: 28px;
+  --leading-8: 32px;
+  --leading-relaxed: 29.25px;
+  --leading-none: 60px;
+  
+  /* Letter Spacing */
+  --tracking-tight: -1.5px;
+  --tracking-snug: -0.45px;
+  --tracking-normal: -0.36px;
+  --tracking-wide: -0.27px;
+  --tracking-wider: -0.24px;
+  --tracking-widest: -0.21px;
+  --tracking-base: -0.16px;
+  
+  /* Font Weights */
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* Text Colors */
+  --color-primary-text: #212631;
+  --color-secondary-text: #374151;
+  --color-muted-text: #65758B;
+  --color-disabled-text: #A1A1AA;
+  --color-white: #FFFFFF;
+  --color-link: #3B82F6;
+}
+
+/* Typography Scale */
+
+/* Display */
+.text-display {
+  font-family: var(--font-sans);
+  font-size: var(--text-5xl);
+  line-height: var(--leading-none);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-primary-text);
+}
+
+/* Headings */
+.text-h1 {
+  font-family: var(--font-sans);
+  font-size: var(--text-5xl);
+  line-height: var(--leading-none);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-primary-text);
+}
+
+.text-h2 {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-8);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-normal);
+  color: var(--color-primary-text);
+}
+
+.text-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-7);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-primary-text);
+}
+
+.text-h3-medium {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-7);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-primary-text);
+}
+
+.text-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-6);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wider);
+  color: var(--color-primary-text);
+}
+
+/* Body Text */
+.text-body-lg {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-secondary-text);
+}
+
+.text-body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-6);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-muted-text);
+}
+
+.text-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-5);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-muted-text);
+}
+
+.text-body-xs {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: var(--leading-4);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-muted-text);
+}
+
+/* Labels & UI Text */
+.text-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-5);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-primary-text);
+}
+
+.text-label-sm {
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  line-height: var(--leading-4);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-primary-text);
+}
+
+/* Links */
+.text-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-5);
+  font-weight: var(--font-normal);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.text-link:hover {
+  color: #2563EB;
+  text-decoration: underline;
+}
+
+/* Buttons */
+.text-button {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  line-height: var(--leading-5);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-base);
+}
+
+.text-button-primary {
+  color: var(--color-white);
+}
+
+.text-button-secondary {
+  color: var(--color-primary-text);
+}
+
+/* Stats & Numbers */
+.text-stat {
+  font-family: var(--font-sans);
+  font-size: var(--text-2xl);
+  line-height: var(--leading-8);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-base);
+  color: var(--color-primary-text);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--color-primary-text);
+}
+
+.text-secondary {
+  color: var(--color-secondary-text);
+}
+
+.text-muted {
+  color: var(--color-muted-text);
+}
+
+.text-disabled {
+  color: var(--color-disabled-text);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-blue {
+  color: var(--color-link);
+}
+
+/* Font Weight Utilities */
+.font-normal {
+  font-weight: var(--font-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-bold);
+}
+
+/* Accessibility Improvements */
+
+/* Fix poor contrast issues */
+.text-button-primary {
+  background-color: #2563EB; /* Better contrast ratio */
+}
+
+.text-on-blue {
+  color: var(--color-white);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure minimum contrast ratios */
+@media (prefers-contrast: high) {
+  :root {
+    --color-muted-text: #4B5563;
+    --color-disabled-text: #6B7280;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary-text: #F9FAFB;
+    --color-secondary-text: #E5E7EB;
+    --color-muted-text: #9CA3AF;
+    --color-disabled-text: #6B7280;
+    --color-link: #60A5FA;
+  }
+  
+  .text-link:hover {
+    color: #93BBFC;
+  }
+}

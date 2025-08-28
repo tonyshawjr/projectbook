@@ -68,6 +68,9 @@ class DashboardController
             'lastUpdated' => date('F j')
         ];
         
+        // Extract variables for the view
+        extract($data);
+        
         include APP_PATH . '/Views/dashboard/index.php';
     }
 }
