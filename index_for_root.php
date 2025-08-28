@@ -1,20 +1,19 @@
 <?php
 /**
- * Projectbook - Entry Point
+ * Projectbook - Entry Point (FOR ROOT INSTALLATION)
  * 
- * This is the main entry point for the Projectbook application.
- * All requests are routed through this file.
+ * Use this file if everything is in public_html root
  */
 
 // Set error reporting for development
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Define paths
-define('ROOT_PATH', __DIR__);  // Changed to current directory since everything is in public_html
+// Define paths - ADJUSTED FOR ROOT INSTALLATION
+define('ROOT_PATH', __DIR__);
 define('APP_PATH', ROOT_PATH . '/app');
 define('CONFIG_PATH', ROOT_PATH . '/config');
-define('PUBLIC_PATH', ROOT_PATH);  // Public is the same as root
+define('PUBLIC_PATH', ROOT_PATH);
 define('STORAGE_PATH', ROOT_PATH . '/storage');
 
 // Start session
