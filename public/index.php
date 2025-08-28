@@ -27,13 +27,13 @@ if (file_exists(CONFIG_PATH . '/config.php')) {
     die('Configuration file not found. Please create config/config.php');
 }
 
-// Autoloader (temporary - will be replaced with proper autoloader)
+// Autoloader
 spl_autoload_register(function ($class) {
+    $class = str_replace('\\', '/', $class);
+    $class = str_replace('App/', '', $class);
+    
     $paths = [
-        APP_PATH . '/Core/',
-        APP_PATH . '/Controllers/',
-        APP_PATH . '/Models/',
-        APP_PATH . '/Helpers/'
+        APP_PATH . '/',
     ];
     
     foreach ($paths as $path) {
@@ -47,54 +47,37 @@ spl_autoload_register(function ($class) {
 
 // Initialize application
 try {
-    // This will be replaced with proper router initialization
-    echo "<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Projectbook - Coming Soon</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: #f3f4f6;
+    $router = new App\Core\Router();
+    $auth = new App\Core\Auth();
+    
+    // Public routes
+    $router->get('/', function() use ($auth) {
+        if ($auth->isLoggedIn()) {
+            header('Location: /dashboard');
+        } else {
+            header('Location: /login');
         }
-        .container {
-            text-align: center;
-            padding: 2rem;
-        }
-        h1 {
-            color: #1e293b;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        p {
-            color: #64748b;
-            font-size: 1.125rem;
-        }
-        .badge {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            margin-top: 1rem;
-        }
-    </style>
-</head>
-<body>
-    <div class='container'>
-        <h1>Projectbook</h1>
-        <p>Freelance Project Management & Billing Dashboard</p>
-        <div class='badge'>Coming Soon</div>
-    </div>
-</body>
-</html>";
+    });
+    
+    $router->get('login', 'AuthController@showLogin');
+    $router->post('login', 'AuthController@login');
+    $router->get('logout', 'AuthController@logout');
+    
+    // Protected routes
+    $router->get('dashboard', 'DashboardController@index', true);
+    $router->get('projects', 'ProjectController@index', true);
+    $router->get('projects/{id}', 'ProjectController@show', true);
+    $router->get('clients', 'ClientController@index', true);
+    $router->get('clients/{id}', 'ClientController@show', true);
+    $router->get('agencies', 'AgencyController@index', true);
+    $router->get('agencies/{id}', 'AgencyController@show', true);
+    $router->get('tickets', 'TicketController@index', true);
+    $router->get('tickets/{id}', 'TicketController@show', true);
+    
+    // Dispatch the request
+    $method = $_SERVER['REQUEST_METHOD'];
+    $uri = $_SERVER['REQUEST_URI'];
+    $router->dispatch($method, $uri);
     
 } catch (Exception $e) {
     // Log error and show generic message
