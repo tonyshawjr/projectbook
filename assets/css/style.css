@@ -32,6 +32,11 @@ body {
   color: var(--primary-text);
 }
 
+/* Main content spacing */
+main {
+  padding-top: 2rem;
+}
+
 /*/* Dashboard Hero Section */
 .dashboard-hero {
   padding: 32px 0;
