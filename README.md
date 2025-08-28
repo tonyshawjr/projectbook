@@ -43,28 +43,23 @@ cp config/config.example.php config/config.php
 mysql -u your_username -p projectbook < database/schema.sql
 ```
 
-6. Set up a virtual host pointing to the `public` directory
-
-7. Build Tailwind CSS:
-```bash
-npx tailwindcss -i ./public/assets/css/input.css -o ./public/assets/css/output.css --watch
-```
+6. Access your site at your domain or localhost/projectbook
 
 ## Project Structure
 
 ```
-/projectbook
-├── /public              # Web root
-│   ├── index.php       # Entry point
-│   └── /assets         # CSS, JS, images
-├── /app                # Application code
-│   ├── /Controllers    # Request handlers
-│   ├── /Models         # Data models
-│   ├── /Views          # Templates
-│   └── /Core           # Framework components
-├── /config             # Configuration files
-├── /database           # SQL schemas and migrations
-└── /storage            # File uploads
+/projectbook (or public_html)
+├── index.php           # Entry point
+├── .htaccess          # URL rewriting rules
+├── /assets            # CSS, JS, images
+├── /app               # Application code
+│   ├── /Controllers   # Request handlers
+│   ├── /Models        # Data models
+│   ├── /Views         # Templates
+│   └── /Core          # Framework components
+├── /config            # Configuration files
+├── /database          # SQL schemas and migrations
+└── /storage           # File uploads
 ```
 
 ## Development

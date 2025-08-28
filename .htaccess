@@ -1,24 +1,26 @@
 # Projectbook .htaccess for shared hosting
-Options -MultiViews
-Options +FollowSymLinks
-
-# Enable rewrite engine
 RewriteEngine On
-RewriteBase /
 
-# Allow access to all files
-<Files "*">
-    Require all granted
-</Files>
+# Force HTTPS (uncomment in production)
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
-# Route all requests to index.php
+# Route all requests through index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME} !-l
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Ensure index.php is the DirectoryIndex
+# Set default index file
 DirectoryIndex index.php
+
+# Prevent access to sensitive files
+<FilesMatch "\.(env|json|lock|md|xml|yml)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Prevent directory browsing
+Options -Indexes
 
 # Security headers
 <IfModule mod_headers.c>
