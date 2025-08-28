@@ -91,129 +91,147 @@ ob_start();
         </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Left Column - Projects -->
-        <div class="lg:col-span-2">
-            <div class="mb-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-semibold">Recent Projects</h2>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm hover:bg-blue-600">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                        </svg>
-                        New Project
-                    </button>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <?php 
-                    $projectsData = [
-                        ['title' => 'Website Redesign', 'client' => 'Acme Corporation', 'status' => 'Active', 'progress' => 75, 'due' => 'Jun 30, 2023'],
-                        ['title' => 'E-commerce Platform', 'client' => 'TechStart Inc.', 'status' => 'Active', 'progress' => 45, 'due' => 'Jul 15, 2023'],
-                        ['title' => 'Branding Refresh', 'client' => 'Globex Corp', 'status' => 'Paused', 'progress' => 30, 'due' => 'Aug 10, 2023'],
-                        ['title' => 'Mobile App UI', 'client' => 'Initech', 'status' => 'Completed', 'progress' => 100, 'due' => 'Jun 5, 2023']
-                    ];
-                    foreach ($projectsData as $project): 
-                    ?>
-                    <div class="bg-white rounded-lg p-5 border border-gray-200">
-                        <div class="flex justify-between items-start mb-3">
-                            <div>
-                                <h3 class="font-semibold text-base"><?php echo $project['title']; ?></h3>
-                                <p class="text-sm text-gray-600"><?php echo $project['client']; ?></p>
-                            </div>
-                            <span class="px-2 py-1 text-xs rounded-md font-medium
-                                <?php 
-                                echo $project['status'] === 'Active' ? 'bg-green-100 text-green-700' : 
-                                     ($project['status'] === 'Completed' ? 'bg-blue-100 text-blue-700' : 
-                                      'bg-yellow-100 text-yellow-700'); 
-                                ?>">
-                                <?php echo $project['status']; ?>
-                            </span>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="flex justify-between text-xs text-gray-600 mb-1">
-                                <span>Progress</span>
-                                <span><?php echo $project['progress']; ?>%</span>
-                            </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full transition-all duration-300" style="width: <?php echo $project['progress']; ?>%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center">
-                            <span class="text-xs text-gray-500">Due: <?php echo $project['due']; ?></span>
-                            <a href="#" class="text-blue-500 text-sm hover:text-blue-600">View →</a>
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-
-        <!-- Right Column -->
-        <div>
-            <!-- Financial Overview -->
-            <div class="bg-white rounded-lg p-6 border border-gray-200 mb-6">
-                <h2 class="flex items-center gap-2 text-lg font-semibold mb-4">
-                    <span class="text-xl">📊</span>
-                    Financial Overview
-                </h2>
-                
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-sm text-gray-600 mb-1">Total Revenue</p>
-                        <div class="flex items-center justify-between">
-                            <p class="text-2xl font-bold">$24,500</p>
-                            <span class="text-green-500 text-lg">↗</span>
-                        </div>
-                    </div>
-                    
-                    <div class="border-t pt-4">
-                        <p class="text-sm text-gray-600 mb-1">Pending Invoices</p>
-                        <div class="flex items-center justify-between">
-                            <p class="text-2xl font-bold">$8,200</p>
-                            <span class="text-2xl">💰</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="w-full bg-blue-500 text-white py-3 rounded-lg mt-6 font-medium hover:bg-blue-600 transition-colors">
-                    View Financial Details
-                </button>
-            </div>
-
-            <!-- Recent Notifications -->
-            <div>
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-lg font-semibold">Recent Notifications</h2>
-                    <a href="/notifications" class="text-blue-500 text-sm hover:text-blue-600">View all</a>
-                </div>
-                
-                <div class="space-y-2">
-                    <?php 
-                    $notificationsData = [
-                        ['icon' => '🎫', 'title' => 'New ticket from Acme Inc.', 'time' => '10 mins ago', 'priority' => 'Homepage redesign feedback - High priority'],
-                        ['icon' => '📧', 'title' => 'Invoice #1234 is overdue', 'time' => '2 hours ago', 'company' => 'Globex Corporation - $1,200.00'],
-                        ['icon' => '📅', 'title' => 'Upcoming consultation', 'time' => 'Tomorrow, 10:00 AM', 'details' => 'Strategy call with John Smith from TechCorp'],
-                        ['icon' => '🔔', 'title' => 'Project deadline approaching', 'time' => 'Today', 'project' => 'Initech website launch - Due in 3 days'],
-                        ['icon' => '💬', 'title' => 'New message from client', 'time' => 'Yesterday', 'sender' => 'Sarah Johnson from Umbrella Corp has a question']
-                    ];
-                    foreach ($notificationsData as $notification): 
-                    ?>
-                    <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">
-                        <span class="text-xl flex-shrink-0"><?php echo $notification['icon']; ?></span>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-sm font-medium text-gray-900"><?php echo $notification['title']; ?></p>
-                            <p class="text-xs text-gray-500 mt-0.5"><?php echo $notification['time']; ?></p>
-                        </div>
-                        <button class="text-gray-400 hover:text-gray-600 flex-shrink-0">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    <!-- Main Content Grid -->
+    <div class="pb-12">
+        <div class="grid lg:grid-cols-3 gap-6">
+            <!-- Left Column - Projects (2/3 width) -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- Recent Projects Section -->
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium">Recent Projects</h3>
+                        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium bg-blue-500 text-white hover:bg-blue-600 h-9 rounded-md px-3 gap-1">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 12h8"></path>
+                                <path d="M12 8v8"></path>
                             </svg>
+                            New Project
                         </button>
                     </div>
-                    <?php endforeach; ?>
+                    
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <?php 
+                        $projectsData = [
+                            ['title' => 'Website Redesign', 'client' => 'Acme Corporation', 'status' => 'Active', 'progress' => 75, 'due' => 'Jun 30, 2023'],
+                            ['title' => 'E-commerce Platform', 'client' => 'TechStart Inc.', 'status' => 'Active', 'progress' => 45, 'due' => 'Jul 15, 2023'],
+                            ['title' => 'Branding Refresh', 'client' => 'Globex Corp', 'status' => 'Paused', 'progress' => 30, 'due' => 'Aug 10, 2023'],
+                            ['title' => 'Mobile App UI', 'client' => 'Initech', 'status' => 'Completed', 'progress' => 100, 'due' => 'Jun 5, 2023']
+                        ];
+                        foreach ($projectsData as $project): 
+                        ?>
+                        <div class="bg-white border border-gray-200 rounded-lg p-4 hover:bg-gray-50 transition-colors">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h4 class="font-medium text-base"><?php echo $project['title']; ?></h4>
+                                    <p class="text-sm text-gray-500"><?php echo $project['client']; ?></p>
+                                </div>
+                                <div class="px-2 py-1 rounded-full text-xs font-medium
+                                    <?php 
+                                    echo $project['status'] === 'Active' ? 'bg-emerald-100 text-emerald-800' : 
+                                         ($project['status'] === 'Completed' ? 'bg-blue-100 text-blue-800' : 
+                                          'bg-amber-100 text-amber-800'); 
+                                    ?>">
+                                    <?php echo $project['status']; ?>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span>Progress</span>
+                                    <span class="font-medium"><?php echo $project['progress']; ?>%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                                    <div class="bg-blue-500 h-full rounded-full" style="width: <?php echo $project['progress']; ?>%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 flex justify-between items-center">
+                                <div class="text-xs text-gray-500">Due: <?php echo $project['due']; ?></div>
+                                <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium hover:bg-gray-100 rounded-md px-3 h-8 gap-1">
+                                    View
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18l6-6-6-6"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Notifications (1/3 width) -->
+            <div class="space-y-6">
+                <!-- Recent Notifications Card -->
+                <div class="bg-white border rounded-xl shadow-sm">
+                    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+                        <h3 class="font-medium">Recent Notifications</h3>
+                        <a href="/notifications" class="text-sm text-blue-500 hover:text-blue-700 hover:underline">View all</a>
+                    </div>
+                    
+                    <div class="divide-y divide-gray-200">
+                        <?php 
+                        $notificationsData = [
+                            ['icon' => 'ticket', 'iconColor' => 'blue', 'title' => 'New ticket from Acme Inc.', 'time' => '10 mins ago', 'description' => 'Homepage redesign feedback - High priority'],
+                            ['icon' => 'credit-card', 'iconColor' => 'amber', 'title' => 'Invoice #1234 is overdue', 'time' => '2 hours ago', 'description' => 'Globex Corporation - $1,200.00'],
+                            ['icon' => 'calendar', 'iconColor' => 'emerald', 'title' => 'Upcoming consultation', 'time' => 'Tomorrow, 10:00 AM', 'description' => 'Strategy call with John Smith from TechCorp'],
+                            ['icon' => 'alert-circle', 'iconColor' => 'rose', 'title' => 'Project deadline approaching', 'time' => 'Today', 'description' => 'Initech website launch - Due in 3 days'],
+                            ['icon' => 'message', 'iconColor' => 'blue', 'title' => 'New message from client', 'time' => 'Yesterday', 'description' => 'Sarah Johnson from Umbrella Corp has a question']
+                        ];
+                        foreach ($notificationsData as $notification): 
+                        ?>
+                        <div class="flex items-center gap-4 p-4 hover:bg-gray-50 cursor-pointer transition-colors">
+                            <!-- Icon Circle -->
+                            <div class="h-10 w-10 rounded-full flex items-center justify-center bg-<?php echo $notification['iconColor']; ?>-100">
+                                <?php if ($notification['icon'] === 'ticket'): ?>
+                                    <svg class="h-5 w-5 text-<?php echo $notification['iconColor']; ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
+                                    </svg>
+                                <?php elseif ($notification['icon'] === 'credit-card'): ?>
+                                    <svg class="h-5 w-5 text-<?php echo $notification['iconColor']; ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                                        <line x1="2" x2="22" y1="10" y2="10"></line>
+                                    </svg>
+                                <?php elseif ($notification['icon'] === 'calendar'): ?>
+                                    <svg class="h-5 w-5 text-<?php echo $notification['iconColor']; ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                <?php elseif ($notification['icon'] === 'alert-circle'): ?>
+                                    <svg class="h-5 w-5 text-<?php echo $notification['iconColor']; ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" x2="12" y1="8" y2="12"></line>
+                                        <line x1="12" x2="12.01" y1="16" y2="16"></line>
+                                    </svg>
+                                <?php else: ?>
+                                    <svg class="h-5 w-5 text-<?php echo $notification['iconColor']; ?>-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                                    </svg>
+                                <?php endif; ?>
+                            </div>
+                            
+                            <!-- Content -->
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-sm truncate font-semibold"><?php echo $notification['title']; ?></h4>
+                                    <div class="ml-2 flex items-center text-gray-500">
+                                        <svg class="h-3 w-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <polyline points="12 6 12 12 16 14"></polyline>
+                                        </svg>
+                                        <span class="text-xs"><?php echo $notification['time']; ?></span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1 line-clamp-1"><?php echo $notification['description']; ?></p>
+                            </div>
+                            
+                            <!-- Chevron -->
+                            <svg class="h-4 w-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 18l6-6-6-6"></path>
+                            </svg>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
