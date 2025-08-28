@@ -5,32 +5,34 @@ $currentPage = 'dashboard';
 ob_start();
 ?>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Header Section -->
-    <div class="mb-8">
-        <h1 class="text-4xl font-bold text-primary-text mb-2">
-            <?php echo htmlspecialchars($greeting); ?>,<br>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Hero Section -->
+    <div class="dashboard-hero">
+        <div class="dashboard-greeting">
+            <?php echo htmlspecialchars($greeting); ?>,
+        </div>
+        <div class="dashboard-name">
             <?php echo htmlspecialchars($user['first_name']); ?>
-        </h1>
-        <p class="text-gray-600">Dashboard last updated on <?php echo $lastUpdated; ?>.</p>
+        </div>
+        <p class="dashboard-updated">Dashboard last updated on <?php echo $lastUpdated; ?>.</p>
     </div>
 
     <!-- Stats Summary -->
-    <div class="mb-6">
-        <p class="text-gray-700">
+    <div class="dashboard-stats">
+        <p>
             You're managing <strong><?php echo $stats['active_projects']; ?> active projects</strong> with 
             <strong><?php echo $stats['open_tickets']; ?> open tickets</strong> that need your attention. 
             Our records show <strong>$<?php echo number_format($stats['overdue_invoices'], 2); ?> in overdue invoices</strong> 
             that would benefit from follow-up.
         </p>
-        <p class="text-gray-700 mt-2">
+        <p class="mt-4">
             Your calendar has <strong><?php echo $stats['upcoming_consultations']; ?> upcoming consultations</strong> 
             scheduled this week. Let's make today productive by tackling these priorities systematically.
         </p>
     </div>
 
     <!-- Action Buttons -->
-    <div class="flex gap-4 mb-8">
+    <div class="flex gap-4 mb-12">
         <a href="/projects" class="btn-primary">
             View Projects →
         </a>
@@ -96,26 +98,28 @@ ob_start();
         <!-- Right Column -->
         <div>
             <!-- Financial Overview -->
-            <div class="card p-6 mb-8">
-                <h2 class="text-lg font-semibold mb-4 flex items-center">
-                    <span class="mr-2">📊</span> Financial Overview
+            <div class="financial-card mb-8">
+                <h2 class="financial-header">
+                    <span>📊</span> Financial Overview
                 </h2>
                 
-                <div class="space-y-4">
-                    <div>
-                        <p class="text-sm text-gray-600">Total Revenue</p>
-                        <p class="text-2xl font-bold text-primary-text">$<?php echo number_format($stats['total_revenue'], 0); ?></p>
-                        <span class="text-sm text-green-600">↗</span>
-                    </div>
-                    
-                    <div>
-                        <p class="text-sm text-gray-600">Pending Invoices</p>
-                        <p class="text-2xl font-bold text-primary-text">$<?php echo number_format($stats['pending_invoices'], 0); ?></p>
-                        <span class="text-sm text-yellow-600">💰</span>
-                    </div>
+                <div class="financial-metric">
+                    <p class="financial-label">Total Revenue</p>
+                    <p class="financial-value">
+                        $<?php echo number_format($stats['total_revenue'], 0); ?>
+                        <span class="indicator-up">↗</span>
+                    </p>
                 </div>
                 
-                <a href="/billing" class="btn-primary w-full mt-6">
+                <div class="financial-metric">
+                    <p class="financial-label">Pending Invoices</p>
+                    <p class="financial-value">
+                        $<?php echo number_format($stats['pending_invoices'], 0); ?>
+                        <span class="indicator-pending">💰</span>
+                    </p>
+                </div>
+                
+                <a href="/billing" class="btn-primary btn-primary-full mt-6">
                     View Financial Details
                 </a>
             </div>
